@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Times Tables Trainer</title>
+  <meta name="description" content="Practise your times tables from 2x to 15x. Works offline. No logins, no data collected.">
+  <meta name="theme-color" content="#1a0b38">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Times Tables">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main id="app">
+
+    <!-- ===== Screen 1: choose tables and mode ===== -->
+    <section id="screen-setup" class="screen active" aria-labelledby="setup-title">
+      <header class="top hero">
+        <img class="mascot" src="images/mascot.svg" alt="" width="84" height="84">
+        <div>
+          <h1 id="setup-title">Times Tables</h1>
+          <p class="sub">Pick the tables you want to practise</p>
+        </div>
+      </header>
+
+      <div class="table-grid" id="table-grid" role="group" aria-label="Times tables"></div>
+
+      <div class="quick-row">
+        <button type="button" class="link-btn" id="select-all">Select all</button>
+        <button type="button" class="link-btn" id="select-none">Clear</button>
+      </div>
+
+      <p class="hint" id="setup-hint" aria-live="polite"></p>
+
+      <div class="mode-buttons">
+        <button type="button" class="big-btn primary" id="start-practise">
+          <span class="btn-title">Practise</span>
+          <span class="btn-sub">20 questions · no timer</span>
+        </button>
+        <button type="button" class="big-btn accent" id="start-challenge">
+          <span class="btn-title">Challenge</span>
+          <span class="btn-sub">As many as you can in 60 s</span>
+        </button>
+      </div>
+
+      <p class="privacy">No login. Nothing you type is saved or sent anywhere.</p>
+    </section>
+
+    <!-- ===== Screen 2: the quiz ===== -->
+    <section id="screen-quiz" class="screen" aria-label="Quiz">
+      <div class="quiz-bar">
+        <button type="button" class="icon-btn" id="quit" aria-label="Stop and see results">✕</button>
+        <div class="progress" id="progress">Q 1/20</div>
+        <div class="score-pill" id="live-score">✓ 0</div>
+      </div>
+
+      <div class="timer-track" id="timer-track" hidden>
+        <div class="timer-fill" id="timer-fill"></div>
+        <span class="timer-text" id="timer-text">60</span>
+      </div>
+
+      <div class="question-card" id="question-card">
+        <div class="question" id="question" aria-live="polite">7 × 8</div>
+        <div class="answer" id="answer" aria-label="Your answer"><span class="placeholder">?</span></div>
+        <div class="feedback" id="feedback" role="status" aria-live="assertive"></div>
+      </div>
+
+      <div class="keypad" id="keypad">
+        <button type="button" class="key" data-key="1">1</button>
+        <button type="button" class="key" data-key="2">2</button>
+        <button type="button" class="key" data-key="3">3</button>
+        <button type="button" class="key" data-key="4">4</button>
+        <button type="button" class="key" data-key="5">5</button>
+        <button type="button" class="key" data-key="6">6</button>
+        <button type="button" class="key" data-key="7">7</button>
+        <button type="button" class="key" data-key="8">8</button>
+        <button type="button" class="key" data-key="9">9</button>
+        <button type="button" class="key key-del" data-key="del" aria-label="Delete">⌫</button>
+        <button type="button" class="key" data-key="0">0</button>
+        <button type="button" class="key key-go" data-key="go" aria-label="Check answer">✓</button>
+      </div>
+    </section>
+
+    <!-- ===== Screen 3: results and review ===== -->
+    <section id="screen-results" class="screen" aria-labelledby="results-title">
+      <header class="top hero">
+        <img class="mascot" src="images/mascot.svg" alt="" width="84" height="84">
+        <div>
+          <h1 id="results-title">Well done!</h1>
+          <p class="sub" id="results-mode"></p>
+        </div>
+      </header>
+
+      <div class="score-card">
+        <div class="score-big" id="score-big">0 / 0</div>
+        <div class="score-pct" id="score-pct">0%</div>
+        <div class="score-msg" id="score-msg"></div>
+      </div>
+
+      <div class="review" id="review">
+        <h2>Questions I got wrong</h2>
+        <ul class="wrong-list" id="wrong-list"></ul>
+        <p class="all-right" id="all-right" hidden>None! Every answer was right. 🎉</p>
+      </div>
+
+      <div class="mode-buttons">
+        <button type="button" class="big-btn accent" id="retry-wrong">
+          <span class="btn-title">Practise my mistakes</span>
+        </button>
+        <button type="button" class="big-btn primary" id="play-again">
+          <span class="btn-title">Play again</span>
+        </button>
+        <button type="button" class="big-btn plain" id="go-home">
+          <span class="btn-title">Choose tables</span>
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
